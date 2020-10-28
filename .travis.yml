@@ -1,0 +1,26 @@
+sudo: false
+language: java
+services:
+- docker
+cache:
+  directories:
+  - "$HOME/.cache"
+env:
+  global:
+addons:
+  sonarcloud:
+    organization: cogpunk
+    token:
+      secure: Su+f+ClHWc7h/ONUWRdYvZ8IzSQJFHkQk16UTQoGrTH1Mzm8MDbNyL1udBQGMQMSOE/NxJkS2cpOdfa6nYuRymWR8cTz9YOYPo5ZrAAXKXXMt+0n43hHqawFwTM1Rt2KSB3ZLbpgAu7AM/FMcRNdgHwqyNPMspSXF1QToz2J507cqORNwCoQhypnqOAee0dy6JBo2c1X5EDKi5l27e15KLlJka0pAimMPuwMFy/Se4DzgL2E+d8y+XBigkXiOSzEQdY8E+DvQAZCCaNF0oUwucUxaVjZaOngvH9W477AQAFCuaE4OJMrIzb3prW7IqLq8yemFzV8BMCC5okWCCql++8O4r7CIIuwEAPJ4xkMtD+/kiWLM9qccajM5W388yPIz5uoZlDcKp7iVDdgHMMr+CE4OUhdjP5GbWQMC1erbNxo8u/Pb8myfHZ1PDEJemliGuw5b81ThVU2Vv0Ch+8Z+CYCsrzdxUKZcOOAjyngcU3ti1cqdu5pGM/OyZIp5PPeWpGPnoFWInpQcTg6z3LPueQe/LE60Mtvc/JUdaWb/yKhr356h3IhdtM8z7NpMZ1YezN+1fISq8mXBWqv92IUe3mVINxr4hbqM1UudmMRS1M7yCBTitBye4h/FmF3vpH1fOk3FaJ0f3ndLkZ5lMs/2amFDvbyQctfoTy5Po82iaw=
+install: skip
+script: "./scripts/test"
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_4f0d00631887_key -iv $encrypted_4f0d00631887_iv
+  -in .travis/gpg.asc.enc -out .travis/gpg.asc -d
+- gpg --fast-import --batch .travis/gpg.asc
+deploy:
+  provider: script
+  script: "./scripts/deploy"
+  skip_cleanup: true
+  on:
+    branch: main
