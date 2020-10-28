@@ -165,10 +165,4 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
-	<repositories>
-		<repository>
-			<id>oss.sonatype.org</id>
-			<url>https://oss.sonatype.org</url>
-		</repository>
-	</repositories>
 </project>
