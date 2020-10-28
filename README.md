@@ -15,6 +15,14 @@ The build requires a Java 6 JDK (or higher) and uses [Maven](https://maven.apach
 
 	mvn install
 
+## Adding as a dependency
+
+	<dependency>
+		<groupId>com.cogpunk</groupId>
+		<artifactId>cogpunk-mathhammer</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+
 ## License
 
 Code is under the [Apache Licence v2](https://www.apache.org/licenses/LICENSE-2.0.txt).
