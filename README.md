@@ -8,6 +8,8 @@ Cogpunk Mathhammer is a framework for determining the probabilities and statisti
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=security_rating)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
+[![Apache License, Version 2.0](https://img.shields.io/github/license/cogpunk/mathhammer)](https://opensource.org/licenses/Apache-2.0)
+[![Cogpunk Mathhammer](https://maven-badges.herokuapp.com/maven-central/com.cogpunk/cogpunk-mathhammer/badge.svg)](https://search.maven.org/artifact/com.cogpunk/cogpunk-mathhammer/)
 
 ## Building from source
 
