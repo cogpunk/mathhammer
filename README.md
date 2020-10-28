@@ -3,7 +3,7 @@
 Cogpunk Mathhammer is a framework for determining the probabilities and statistics of the game of Warhammer 40,000 (8th & 9th Editions)
 
 [![Build Status](https://travis-ci.com/cogpunk/mathhammer.svg?branch=main)](https://travis-ci.com/cogpunk/mathhammer)
-<!--- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=alert_status)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer) -->
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=alert_status)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=coverage)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=cogpunk_mathhammer&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=cogpunk_mathhammer)
