@@ -6,6 +6,8 @@
 	<artifactId>mathhammer</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Mathhammer</name>
+	<description>A framework for determining the probabilities and statistics of the game of Warhammer 40,000 (8th and 9th Editions)</description>
+	<url>https://github.com/cogpunk/mathhammer</url>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -16,6 +18,15 @@
 	<scm>
 		<url>https://github.com/cogpunk/math</url>
 	</scm>
+	
+	<developers>
+		<developer>
+			<name>Cogpunk</name>
+			<email>opensource@cogpunk.com</email>
+			<url>https://github.com/cogpunk</url>
+		</developer>
+	</developers>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.cogpunk</groupId>
