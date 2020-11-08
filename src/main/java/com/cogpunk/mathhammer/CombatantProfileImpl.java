@@ -1,5 +1,6 @@
 package com.cogpunk.mathhammer;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.math3.fraction.Fraction;
 
 import com.cogpunk.math.probability.EventProbabilityProfile;
@@ -30,11 +31,11 @@ public class CombatantProfileImpl implements CombatantProfile {
 	
 	private ReRoll saveReRoll;
 	
-	public EventProbabilityProfile<Integer, Fraction> damageRoll;
+	private EventProbabilityProfile<Integer, Fraction> damageRoll;
 	
-	public int wounds;
+	private int wounds;
 	
-	public int cost;
+	private int cost;
 	
 	
 	public CombatantProfileImpl(EventProbabilityProfile<Integer, Fraction> attacks, int skill, int toHitModifier, ReRoll toHitReRoll, int strength, int toughness,
@@ -170,51 +171,34 @@ public class CombatantProfileImpl implements CombatantProfile {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+		
 		if (obj == null)
 			return false;
+		
 		if (getClass() != obj.getClass())
 			return false;
-		CombatantProfileImpl other = (CombatantProfileImpl) obj;
-		if (armourPenetration != other.armourPenetration)
-			return false;
-		if (attacks == null) {
-			if (other.attacks != null)
-				return false;
-		} else if (!attacks.equals(other.attacks))
-			return false;
-		if (cost != other.cost)
-			return false;
-		if (damageRoll == null) {
-			if (other.damageRoll != null)
-				return false;
-		} else if (!damageRoll.equals(other.damageRoll))
-			return false;
-		if (invulnerableSave == null) {
-			if (other.invulnerableSave != null)
-				return false;
-		} else if (!invulnerableSave.equals(other.invulnerableSave))
-			return false;
-		if (save != other.save)
-			return false;
-		if (saveReRoll != other.saveReRoll)
-			return false;
-		if (skill != other.skill)
-			return false;
-		if (strength != other.strength)
-			return false;
-		if (toHitModifier != other.toHitModifier)
-			return false;
-		if (toHitReRoll != other.toHitReRoll)
-			return false;
-		if (toWoundModifier != other.toWoundModifier)
-			return false;
-		if (toWoundReRoll != other.toWoundReRoll)
-			return false;
-		if (toughness != other.toughness)
-			return false;
-		if (wounds != other.wounds)
-			return false;
-		return true;
+		
+		CombatantProfileImpl rhs = (CombatantProfileImpl) obj;
+		
+		return new EqualsBuilder()
+				.appendSuper(super.equals(obj))
+				.append(armourPenetration, rhs.armourPenetration)
+				.append(attacks, rhs.attacks)
+				.append(cost, rhs.cost)
+				.append(damageRoll, rhs.damageRoll)
+				.append(invulnerableSave, rhs.invulnerableSave)
+				.append(save, rhs.save)
+				.append(saveReRoll, rhs.saveReRoll)
+				.append(skill, rhs.skill)
+				.append(strength, rhs.strength)
+				.append(toHitModifier, rhs.toHitModifier)
+				.append(toHitReRoll, rhs.toHitReRoll)
+				.append(toWoundModifier, rhs.toWoundModifier)
+				.append(toWoundReRoll, rhs.toWoundReRoll)
+				.append(toughness, rhs.toughness)
+				.append(wounds, rhs.wounds)
+				.isEquals();
+
 	}
 	
 	

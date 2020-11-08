@@ -73,9 +73,8 @@ public class Statistics {
 		
 		AttackDamageProfile attackDamageProfile = attackDamageProfileCalculator.calculate(attacker, defender);
 		
-		Fraction attacksToKillDefender = new Fraction(defender.getWounds()).divide(averageRollCalculator.mean(attackDamageProfile));
-		
-		return attacksToKillDefender;
+		return new Fraction(defender.getWounds()).divide(averageRollCalculator.mean(attackDamageProfile));
+
 		
 	}
 

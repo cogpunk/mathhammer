@@ -26,9 +26,7 @@ public class PointEffectiveness {
 		
 		Fraction pointsCostToKillDefender = new Fraction(attacker.getCost()).multiply(attacksToKillDefender);
 		
-		Fraction ratioWithDefenderPoints = new Fraction(defender.getCost()).divide(pointsCostToKillDefender);
-		
-		return ratioWithDefenderPoints;
+		return new Fraction(defender.getCost()).divide(pointsCostToKillDefender);
 		
 	}
 
