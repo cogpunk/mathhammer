@@ -3,6 +3,8 @@ package com.cogpunk.mathhammer;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.math3.fraction.Fraction;
 
 import com.cogpunk.math.FractionOperator;
@@ -55,10 +57,9 @@ public class Dice implements ComparableEventProbabilityProfile<Integer, Fraction
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((probabilityProfile == null) ? 0 : probabilityProfile.hashCode());
-		return result;
+		return new HashCodeBuilder(15, 93).
+			       append(probabilityProfile).
+			       toHashCode();
 	}
 
 	@Override
@@ -69,13 +70,14 @@ public class Dice implements ComparableEventProbabilityProfile<Integer, Fraction
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Dice other = (Dice) obj;
-		if (probabilityProfile == null) {
-			if (other.probabilityProfile != null)
-				return false;
-		} else if (!probabilityProfile.equals(other.probabilityProfile))
-			return false;
-		return true;
+		Dice rhs = (Dice) obj;
+		
+		return new EqualsBuilder()
+				.appendSuper(super.equals(obj))
+				.append(probabilityProfile, rhs.probabilityProfile)
+				.isEquals();
+		
+		
 	}
 
 	@Override

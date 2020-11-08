@@ -1,6 +1,7 @@
 package com.cogpunk.mathhammer;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.math3.fraction.Fraction;
 
 import com.cogpunk.math.probability.EventProbabilityProfile;
@@ -147,24 +148,24 @@ public class CombatantProfileImpl implements CombatantProfile {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + armourPenetration;
-		result = prime * result + ((attacks == null) ? 0 : attacks.hashCode());
-		result = prime * result + cost;
-		result = prime * result + ((damageRoll == null) ? 0 : damageRoll.hashCode());
-		result = prime * result + ((invulnerableSave == null) ? 0 : invulnerableSave.hashCode());
-		result = prime * result + save;
-		result = prime * result + ((saveReRoll == null) ? 0 : saveReRoll.hashCode());
-		result = prime * result + skill;
-		result = prime * result + strength;
-		result = prime * result + toHitModifier;
-		result = prime * result + ((toHitReRoll == null) ? 0 : toHitReRoll.hashCode());
-		result = prime * result + toWoundModifier;
-		result = prime * result + ((toWoundReRoll == null) ? 0 : toWoundReRoll.hashCode());
-		result = prime * result + toughness;
-		result = prime * result + wounds;
-		return result;
+		
+		return new HashCodeBuilder(17, 95)
+				.append(armourPenetration)
+				.append(attacks)
+				.append(cost)
+				.append(damageRoll)
+				.append(invulnerableSave)
+				.append(save)
+				.append(saveReRoll)
+				.append(skill)
+				.append(strength)
+				.append(toHitModifier)
+				.append(toHitReRoll)
+				.append(toWoundModifier)
+				.append(toWoundReRoll)
+				.append(toughness)
+				.append(wounds)
+			    .toHashCode();
 	}
 
 	@Override

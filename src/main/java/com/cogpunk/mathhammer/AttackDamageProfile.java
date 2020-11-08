@@ -2,6 +2,8 @@ package com.cogpunk.mathhammer;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.math3.fraction.Fraction;
 
 import com.cogpunk.math.probability.EventProbabilityProfile;
@@ -49,12 +51,12 @@ public class AttackDamageProfile implements EventProbabilityProfile<Integer, Fra
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((attackProfile == null) ? 0 : attackProfile.hashCode());
-		result = prime * result + ((defenceProfile == null) ? 0 : defenceProfile.hashCode());
-		result = prime * result + ((probabilityProfile == null) ? 0 : probabilityProfile.hashCode());
-		return result;
+		
+		return new HashCodeBuilder(13, 91).
+			       append(attackProfile).
+			       append(defenceProfile).
+			       append(probabilityProfile).
+			       toHashCode();
 	}
 
 	@Override
@@ -65,23 +67,15 @@ public class AttackDamageProfile implements EventProbabilityProfile<Integer, Fra
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AttackDamageProfile other = (AttackDamageProfile) obj;
-		if (attackProfile == null) {
-			if (other.attackProfile != null)
-				return false;
-		} else if (!attackProfile.equals(other.attackProfile))
-			return false;
-		if (defenceProfile == null) {
-			if (other.defenceProfile != null)
-				return false;
-		} else if (!defenceProfile.equals(other.defenceProfile))
-			return false;
-		if (probabilityProfile == null) {
-			if (other.probabilityProfile != null)
-				return false;
-		} else if (!probabilityProfile.equals(other.probabilityProfile))
-			return false;
-		return true;
+		AttackDamageProfile rhs = (AttackDamageProfile) obj;
+		
+		return new EqualsBuilder()
+				.appendSuper(super.equals(obj))
+				.append(attackProfile, rhs.attackProfile)
+				.append(defenceProfile, rhs.defenceProfile)
+				.append(probabilityProfile, rhs.probabilityProfile)
+				.isEquals();
+		
 	}
 	
 	
