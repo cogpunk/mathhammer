@@ -1,6 +1,7 @@
 package com.cogpunk.mathhammer;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.apache.commons.math3.fraction.Fraction;
 import org.junit.Before;
@@ -47,6 +48,30 @@ public class SaveRollTest extends SingleDiceRollTest {
 		assertEquals(new Fraction(2,6), roll.getProbability(1));
 		assertEquals(new Fraction(4,6), roll.getProbability(0));
 		
+	}
+	
+	
+	@Test
+	public void testHashCode() {
+		
+		EventProbabilityProfile<Integer, Fraction> profile = new SaveRoll(3, 4, -2, ReRoll.FAIL);
+		EventProbabilityProfile<Integer, Fraction> same = new SaveRoll(3, 4, -2, ReRoll.FAIL);
+		
+		assertEquals(profile.hashCode(), same.hashCode());
+	}
+
+	@Test
+	public void testEqualsObject() {
+		
+		EventProbabilityProfile<Integer, Fraction> profile = new SaveRoll(3, 4, -2, ReRoll.FAIL);
+		EventProbabilityProfile<Integer, Fraction> same = new SaveRoll(3, 4, -2, ReRoll.FAIL);
+		EventProbabilityProfile<Integer, Fraction> different = new SaveRoll(3, 5, -2, ReRoll.FAIL);
+		
+		
+		assertEquals(profile, same);
+		assertEquals(same, profile);
+		assertNotEquals(profile, different);
+		assertNotEquals(different, profile);
 	}
 
 }

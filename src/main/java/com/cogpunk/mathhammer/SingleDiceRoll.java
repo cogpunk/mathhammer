@@ -3,6 +3,8 @@ package com.cogpunk.mathhammer;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.math3.fraction.Fraction;
 
 import com.cogpunk.math.FractionOperator;
@@ -14,69 +16,72 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 import com.cogpunk.math.probability.SimpleProbabilityProfileImpl;
 
 public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction> {
-	
+
 	private int target;
-	
+
 	private int modifier;
-	
+
 	private ReRoll reroll;
-	
+
 	private EventProbabilityProfile<Integer, Fraction> profile;
-	
+
 	private EventProbabilityProfile<Integer, Fraction> diceProfile;
-	
+
 	public SingleDiceRoll(int target, int modifier, ReRoll reroll) {
 		super();
-		
+
 		this.target = target;
 		this.modifier = modifier;
 		this.reroll = reroll;
-		
+
 		calculate();
 	}
 
 	protected void calculate() {
-		
-		
+
 		EventProbabilityProfile<Integer, Fraction> localProfile = new Dice(6);
-		
+
 		FractionOperator fractionOperator = new FractionOperator();
-		
+
 		int localTarget = Math.max(2, target);
-		
+
 		int modifiedTarget = Math.max(2, target - modifier);
-		
+
 		switch (reroll) {
-			case ONE : {
-				localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile, new EventLessThanSelector<Integer, Fraction>(2), 1, fractionOperator);
-				break;
-			}
-			case FAIL : {
-				//
-				// RErolling of failures is optional, and there is no point re-rolling a fail that will be a success upon modification, 
-				// hence taking the lower of he two targets to trigger a re-roll
-				//
-				localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile, new EventLessThanSelector<Integer, Fraction>(Math.min(localTarget, modifiedTarget)), 1, fractionOperator);
-				break;
-			}
-			default : {
-				// do nothing
-				break;
-			}
+		case ONE: {
+			localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile,
+					new EventLessThanSelector<Integer, Fraction>(2), 1, fractionOperator);
+			break;
 		}
-		
-		ComparableEventProbabilityProfile<Integer, Fraction> compLocalProfile = new ComparableEventProbabilityProfileImpl<Integer, Fraction>(localProfile.map(), fractionOperator);
-		
-		
+		case FAIL: {
+			//
+			// RErolling of failures is optional, and there is no point re-rolling a fail
+			// that will be a success upon modification,
+			// hence taking the lower of he two targets to trigger a re-roll
+			//
+			localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile,
+					new EventLessThanSelector<Integer, Fraction>(Math.min(localTarget, modifiedTarget)), 1,
+					fractionOperator);
+			break;
+		}
+		default: {
+			// do nothing
+			break;
+		}
+		}
+
+		ComparableEventProbabilityProfile<Integer, Fraction> compLocalProfile = new ComparableEventProbabilityProfileImpl<Integer, Fraction>(
+				localProfile.map(), fractionOperator);
+
 		Fraction passProb = compLocalProfile.getProbabilityGreaterThanOrEqualTo(modifiedTarget);
-		
+
 		Map<Integer, Fraction> resultMap = new HashMap<Integer, Fraction>();
 		resultMap.put(1, passProb);
 		resultMap.put(0, fractionOperator.subtract(Fraction.ONE, passProb));
-		
+
 		profile = new SimpleProbabilityProfileImpl<Integer, Fraction>(resultMap);
 		diceProfile = compLocalProfile;
-		
+
 	}
 
 	@Override
@@ -88,11 +93,10 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 	public Map<Integer, Fraction> map() {
 		return profile.map();
 	}
-	
+
 	public EventProbabilityProfile<Integer, Fraction> getDiceProfile() {
 		return diceProfile;
 	}
-	
 
 	public int getTarget() {
 		return target;
@@ -112,8 +116,30 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 
 	@Override
 	public String toString() {
-		return "SingleDiceRoll [target=" + target + ", modifier=" + modifier + ", reroll=" + reroll + ", profile=" + profile
-				+ ", diceProfile=" + diceProfile + "]";
+		return "SingleDiceRoll [target=" + target + ", modifier=" + modifier + ", reroll=" + reroll + ", profile="
+				+ profile + ", diceProfile=" + diceProfile + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(15, 93).append(target).append(modifier).append(reroll).append(profile)
+				.append(diceProfile).toHashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SingleDiceRoll rhs = (SingleDiceRoll) obj;
+
+		return new EqualsBuilder().append(target, rhs.target)
+				.append(modifier, rhs.modifier).append(reroll, rhs.reroll).append(profile, rhs.profile)
+				.append(diceProfile, rhs.diceProfile).isEquals();
+
 	}
 
 }
