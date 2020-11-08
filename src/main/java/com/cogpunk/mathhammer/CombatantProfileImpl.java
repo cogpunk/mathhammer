@@ -182,7 +182,6 @@ public class CombatantProfileImpl implements CombatantProfile {
 		CombatantProfileImpl rhs = (CombatantProfileImpl) obj;
 		
 		return new EqualsBuilder()
-				.appendSuper(super.equals(obj))
 				.append(armourPenetration, rhs.armourPenetration)
 				.append(attacks, rhs.attacks)
 				.append(cost, rhs.cost)
