@@ -5,6 +5,8 @@ import org.apache.commons.math3.fraction.Fraction;
 import com.cogpunk.math.NumberOperator;
 import com.cogpunk.math.probability.AverageEventCalculator;
 import com.cogpunk.math.probability.EventProbabilityProfile;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public class AverageRollCalculator extends AverageEventCalculator<Integer, Fraction> {
 	
@@ -44,4 +46,24 @@ public class AverageRollCalculator extends AverageEventCalculator<Integer, Fract
 		return probabilityNumberOperator.divide(totalEvent, totalProb);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(final Object other) {
+		if (!(other instanceof AverageRollCalculator)) {
+			return false;
+		}
+		AverageRollCalculator castOther = (AverageRollCalculator) other;
+		return new EqualsBuilder().appendSuper(super.equals(castOther)).append(probabilityNumberOperator, castOther.probabilityNumberOperator).isEquals();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder().appendSuper(super.hashCode()).append(probabilityNumberOperator).toHashCode();
+	}
+	
 }

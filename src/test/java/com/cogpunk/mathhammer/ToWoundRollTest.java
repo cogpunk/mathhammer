@@ -33,6 +33,16 @@ public class ToWoundRollTest extends SingleDiceRollTest {
 	}
 	
 	@Test
+	public void testGetters() {
+		ToWoundRoll roll = new ToWoundRoll(2, 4, ReRoll.NONE);
+		
+		assertEquals(2, roll.getTarget());
+		assertEquals(4, roll.getModifier());
+		assertEquals(ReRoll.NONE, roll.getReroll());
+		
+	}
+	
+	@Test
 	public void testEqualsAndHashCode() {
 		
 		EqualsVerifier.simple().forClass(ToWoundRoll.class).verify();

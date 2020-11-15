@@ -12,6 +12,8 @@ import org.junit.Test;
 import com.cogpunk.math.FractionOperator;
 import com.cogpunk.math.probability.SimpleProbabilityProfileImpl;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 public class AverageRollCalculatorTest {
 
 	@Before
@@ -34,6 +36,13 @@ public class AverageRollCalculatorTest {
 		map.put(3, new Fraction(3,3));
 		
 		assertEquals(new Fraction(14, 7), calc.mean(new SimpleProbabilityProfileImpl<Integer, Fraction>(map)));
+		
+	}
+	
+	@Test
+	public void testEqualsAndHashCode() {
+		
+		EqualsVerifier.simple().forClass(AverageRollCalculator.class).verify();
 		
 	}
 

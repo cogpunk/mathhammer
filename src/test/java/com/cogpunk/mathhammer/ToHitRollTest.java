@@ -25,11 +25,11 @@ public class ToHitRollTest extends SingleDiceRollTest {
 	
 	@Test
 	public void testGetters() {
-		ToHitRoll toHitRule = new ToHitRoll(2, 4, ReRoll.NONE);
+		ToHitRoll roll = new ToHitRoll(2, 4, ReRoll.NONE);
 		
-		assertEquals(2, toHitRule.getTarget());
-		assertEquals(4, toHitRule.getModifier());
-		assertEquals(ReRoll.NONE, toHitRule.getReroll());
+		assertEquals(2, roll.getTarget());
+		assertEquals(4, roll.getModifier());
+		assertEquals(ReRoll.NONE, roll.getReroll());
 		
 	}
 
