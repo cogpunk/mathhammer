@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import com.cogpunk.math.probability.EventProbabilityProfile;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 public class SaveRollTest extends SingleDiceRollTest {
 
 	@Before
@@ -52,26 +54,21 @@ public class SaveRollTest extends SingleDiceRollTest {
 	
 	
 	@Test
-	public void testHashCode() {
+	public void testEqualsAndHashCode() {
 		
-		EventProbabilityProfile<Integer, Fraction> profile = new SaveRoll(3, 4, -2, ReRoll.FAIL);
-		EventProbabilityProfile<Integer, Fraction> same = new SaveRoll(3, 4, -2, ReRoll.FAIL);
+		EqualsVerifier.simple().forClass(SaveRoll.class).verify();
 		
-		assertEquals(profile.hashCode(), same.hashCode());
 	}
-
+	
 	@Test
-	public void testEqualsObject() {
+	public void testGetters() {
+		SaveRoll saveRoll = new SaveRoll(2, 4, 5, ReRoll.NONE);
 		
-		EventProbabilityProfile<Integer, Fraction> profile = new SaveRoll(3, 4, -2, ReRoll.FAIL);
-		EventProbabilityProfile<Integer, Fraction> same = new SaveRoll(3, 4, -2, ReRoll.FAIL);
-		EventProbabilityProfile<Integer, Fraction> different = new SaveRoll(3, 5, -2, ReRoll.FAIL);
+		assertEquals(2, saveRoll.getTarget());
+		assertEquals((Integer) 4, saveRoll.getInvulnerabaleTarget());
+		assertEquals(5, saveRoll.getModifier());
+		assertEquals(ReRoll.NONE, saveRoll.getReroll());
 		
-		
-		assertEquals(profile, same);
-		assertEquals(same, profile);
-		assertNotEquals(profile, different);
-		assertNotEquals(different, profile);
 	}
 
 }

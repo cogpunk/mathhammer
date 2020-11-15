@@ -146,64 +146,36 @@ public class CombatantProfileImpl implements CombatantProfile {
 				+ damageRoll + ", wounds=" + wounds + ", cost=" + cost + "]";
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(final Object other) {
+		if (!(other instanceof CombatantProfileImpl)) {
+			return false;
+		}
+		CombatantProfileImpl castOther = (CombatantProfileImpl) other;
+		return new EqualsBuilder().append(attacks, castOther.attacks).append(skill, castOther.skill)
+				.append(toHitModifier, castOther.toHitModifier).append(toHitReRoll, castOther.toHitReRoll)
+				.append(strength, castOther.strength).append(toughness, castOther.toughness)
+				.append(toWoundModifier, castOther.toWoundModifier).append(toWoundReRoll, castOther.toWoundReRoll)
+				.append(save, castOther.save).append(invulnerableSave, castOther.invulnerableSave)
+				.append(armourPenetration, castOther.armourPenetration).append(saveReRoll, castOther.saveReRoll)
+				.append(damageRoll, castOther.damageRoll).append(wounds, castOther.wounds).append(cost, castOther.cost)
+				.isEquals();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
-		
-		return new HashCodeBuilder(17, 95)
-				.append(armourPenetration)
-				.append(attacks)
-				.append(cost)
-				.append(damageRoll)
-				.append(invulnerableSave)
-				.append(save)
-				.append(saveReRoll)
-				.append(skill)
-				.append(strength)
-				.append(toHitModifier)
-				.append(toHitReRoll)
-				.append(toWoundModifier)
-				.append(toWoundReRoll)
-				.append(toughness)
-				.append(wounds)
-			    .toHashCode();
+		return new HashCodeBuilder().append(attacks).append(skill).append(toHitModifier).append(toHitReRoll)
+				.append(strength).append(toughness).append(toWoundModifier).append(toWoundReRoll).append(save)
+				.append(invulnerableSave).append(armourPenetration).append(saveReRoll).append(damageRoll).append(wounds)
+				.append(cost).toHashCode();
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		
-		if (obj == null)
-			return false;
-		
-		if (getClass() != obj.getClass())
-			return false;
-		
-		CombatantProfileImpl rhs = (CombatantProfileImpl) obj;
-		
-		return new EqualsBuilder()
-				.append(armourPenetration, rhs.armourPenetration)
-				.append(attacks, rhs.attacks)
-				.append(cost, rhs.cost)
-				.append(damageRoll, rhs.damageRoll)
-				.append(invulnerableSave, rhs.invulnerableSave)
-				.append(save, rhs.save)
-				.append(saveReRoll, rhs.saveReRoll)
-				.append(skill, rhs.skill)
-				.append(strength, rhs.strength)
-				.append(toHitModifier, rhs.toHitModifier)
-				.append(toHitReRoll, rhs.toHitReRoll)
-				.append(toWoundModifier, rhs.toWoundModifier)
-				.append(toWoundReRoll, rhs.toWoundReRoll)
-				.append(toughness, rhs.toughness)
-				.append(wounds, rhs.wounds)
-				.isEquals();
-
-	}
-	
-	
-	
-	
 	
 	
 

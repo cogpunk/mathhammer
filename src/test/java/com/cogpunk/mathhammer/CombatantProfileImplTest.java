@@ -6,35 +6,28 @@ import org.apache.commons.math3.fraction.Fraction;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.cogpunk.math.probability.EventGreaterThanSelector;
 import com.cogpunk.math.probability.EventProbabilityProfile;
+
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class CombatantProfileImplTest {
 	
 	private CombatantProfileImpl profile;
-	private CombatantProfileImpl same;
-	private CombatantProfileImpl different;
 	
 
 	@Before
 	public void setUp() throws Exception {
 		
 		profile = new CombatantProfileImpl(new FixedValue(1), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new FixedValue(1), 1, 13);
-		same =    new CombatantProfileImpl(new FixedValue(1), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new FixedValue(1), 1, 13);
-		different = new CombatantProfileImpl(new FixedValue(2), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new FixedValue(1), 1, 13);
 		
 	}
 
 	@Test
-	public void testHashCode() {
-		assertEquals(profile.hashCode(), same.hashCode());
-	}
-
-	@Test
-	public void testEqualsObject() {
-		assertEquals(profile, same);
-		assertEquals(same, profile);
-		assertNotEquals(profile, different);
-		assertNotEquals(different, profile);
+	public void testEqualsAndHashCode() {
+		
+		EqualsVerifier.simple().forClass(CombatantProfileImpl.class).verify();
+		
 	}
 	
 	@Test

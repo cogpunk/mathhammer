@@ -33,7 +33,6 @@ public class AttackDamageProfileCalculator {
 				new VariableIntegerZeroHandler<Fraction>(),
 				toHitRoll
 		);
-		
 	}
 	
 	public EventProbabilityProfile<Integer, Fraction> calculateWoundProbabilityProfile(AttackProfile attackProfile, DefenceProfile defenceProfile, EventProbabilityProfile<Integer, Fraction> hitProbabilityProfile) {

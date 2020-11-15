@@ -138,5 +138,15 @@ public class SingleDiceRollTest {
 		assertNotEquals(different, profile);
 	}
 	
+	@Test
+	public void testGetters() {
+		SingleDiceRoll roll = new SingleDiceRoll(2, 4, ReRoll.NONE);
+		
+		assertEquals(2, roll.getTarget());
+		assertEquals(4, roll.getModifier());
+		assertEquals(ReRoll.NONE, roll.getReroll());
+		
+	}
+	
 
 }

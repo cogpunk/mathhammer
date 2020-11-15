@@ -38,6 +38,22 @@ public class SaveRoll implements EventProbabilityProfile<Integer, Fraction> {
 			roll = new SingleDiceRoll(invulnerabaleTarget, 0, reroll);
 		}
 	}
+	
+	public int getTarget() {
+		return target;
+	}
+
+	public Integer getInvulnerabaleTarget() {
+		return invulnerabaleTarget;
+	}
+
+	public int getModifier() {
+		return modifier;
+	}
+
+	public ReRoll getReroll() {
+		return reroll;
+	}
 
 	@Override
 	public Fraction getProbability(Integer event) {
@@ -54,37 +70,30 @@ public class SaveRoll implements EventProbabilityProfile<Integer, Fraction> {
 		return "SaveRoll [target=" + target + ", invulnerabaleTarget=" + invulnerabaleTarget + ", modifier=" + modifier
 				+ ", reroll=" + reroll + ", roll=" + roll + "]";
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(final Object other) {
+		if (!(other instanceof SaveRoll)) {
+			return false;
+		}
+		SaveRoll castOther = (SaveRoll) other;
+		return new EqualsBuilder().append(target, castOther.target)
+				.append(invulnerabaleTarget, castOther.invulnerabaleTarget).append(modifier, castOther.modifier)
+				.append(reroll, castOther.reroll).append(roll, castOther.roll).isEquals();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(15, 93)
-				.append(target)
-				.append(modifier)
-				.append(reroll)
-				.append(invulnerabaleTarget)
-				.append(roll)
-				.toHashCode();
+		return new HashCodeBuilder().append(target).append(invulnerabaleTarget).append(modifier).append(reroll)
+				.append(roll).toHashCode();
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SaveRoll rhs = (SaveRoll) obj;
-
-		return new EqualsBuilder()
-				.append(target, rhs.target)
-				.append(modifier, rhs.modifier)
-				.append(reroll, rhs.reroll)
-				.append(invulnerabaleTarget, rhs.invulnerabaleTarget)
-				.append(roll, rhs.roll)
-				.isEquals();
-
-	}
+	
 	
 	
 

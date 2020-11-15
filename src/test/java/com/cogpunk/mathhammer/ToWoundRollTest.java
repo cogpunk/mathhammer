@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import com.cogpunk.math.probability.EventProbabilityProfile;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 public class ToWoundRollTest extends SingleDiceRollTest {
 	
 	@Override
@@ -27,6 +29,13 @@ public class ToWoundRollTest extends SingleDiceRollTest {
 		assertEquals(2, new ToWoundRoll(8,4,0,ReRoll.NONE).getTarget());
 		assertEquals(2, new ToWoundRoll(9,4,0,ReRoll.NONE).getTarget());
 		assertEquals(2, new ToWoundRoll(10,4,0,ReRoll.NONE).getTarget());
+		
+	}
+	
+	@Test
+	public void testEqualsAndHashCode() {
+		
+		EqualsVerifier.simple().forClass(ToWoundRoll.class).verify();
 		
 	}
 	

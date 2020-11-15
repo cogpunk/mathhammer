@@ -55,30 +55,7 @@ public class Dice implements ComparableEventProbabilityProfile<Integer, Fraction
 		return probabilityProfile.getProbabilityLessThan(target);
 	}
 
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder(15, 93).
-			       append(probabilityProfile).
-			       toHashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Dice rhs = (Dice) obj;
-		
-		return new EqualsBuilder()
-				.appendSuper(super.equals(obj))
-				.append(probabilityProfile, rhs.probabilityProfile)
-				.isEquals();
-		
-		
-	}
+	
 
 	@Override
 	public Map<Integer, Fraction> map() {
@@ -90,10 +67,24 @@ public class Dice implements ComparableEventProbabilityProfile<Integer, Fraction
 		return "Dice [probabilityProfile=" + probabilityProfile + "]";
 	}
 
-	
-	
-	
-	
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(final Object other) {
+		if (!(other instanceof Dice)) {
+			return false;
+		}
+		Dice castOther = (Dice) other;
+		return new EqualsBuilder().append(probabilityProfile, castOther.probabilityProfile).isEquals();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder().append(probabilityProfile).toHashCode();
+	}
 
 }
