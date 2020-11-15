@@ -26,7 +26,7 @@ public class AttackDamageProfileTest {
 	@Test
 	public void testEqualsAndHashCode() {
 		
-		EqualsVerifier.simple().forClass(CombatantProfileImpl.class).verify();
+		EqualsVerifier.simple().forClass(AttackDamageProfile.class).verify();
 		
 	}
 

@@ -7,6 +7,8 @@ import org.apache.commons.math3.fraction.Fraction;
 import org.junit.Before;
 import org.junit.Test;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 public class DiceTest {
 	
 	Dice dice;
@@ -42,14 +44,10 @@ public class DiceTest {
 	}
 
 	@Test
-	public void testGetProbabilityLessThan() {
-		assertEquals(new Fraction(2,3), dice.getProbabilityLessThan(5));
-	}
-
-	@Test
-	public void testEqualsObject() {
-		assertEquals(new Dice(6), dice);
-		assertEquals(dice, new Dice(6));
+	public void testEqualsAndHashCode() {
+		
+		EqualsVerifier.simple().forClass(Dice.class).verify();
+		
 	}
 
 }
