@@ -31,14 +31,52 @@ Code is under the [Apache Licence v2](https://www.apache.org/licenses/LICENSE-2.
 
 ## Example
 
-	Statistics statistics = new Statistics(new AverageRollCalculator(new FractionOperator()), new AttackDamageProfileCalculator());
-			
-	CombatantProfile intercessor =   new CombatantProfileImpl(new FixedValue(1), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, -1, ReRoll.NONE, new FixedValue(1), 2, 18);
-	CombatantProfile necronWarrior = new CombatantProfileImpl(new FixedValue(1), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 4, null, -1, ReRoll.NONE, new FixedValue(1), 1, 12);
-		
-	// Determine the kill ration of the Intercessor vs the Necron Warrior
-		
+	Statistics statistics = new Statistics(
+				new AverageRollCalculator(
+						new FractionOperator()), 
+				new AttackDamageProfileCalculator());
+	
+	CombatantProfile intercessor = new CombatantProfileImpl(
+		new FixedValue(1), // Number of attacks probability Profile
+		3,                 // To Hit Target
+		0,                 // To Hit Modifier
+		ReRoll.NONE,       // To Hit Re-roll
+		4,                 // Strength
+		4,                 // Toughness
+		0,                 // To Wound Modifier
+		ReRoll.NONE,       // To Wound Re roll
+		3,                 // Save Target
+		null,              // Invulnerable Save target
+		-1,                // Armour Penetration Modifier
+		ReRoll.NONE,       // Save Re roll
+		new FixedValue(1), // Damage probability Profile
+		2,                 // Wounds
+		18                 // Points Cost
+	);
+	
+	CombatantProfile necronWarrior =  new CombatantProfileImpl(
+		new FixedValue(1), // Number of attacks probability Profile
+		3,                 // To Hit Target
+		0,                 // To Hit Modifier
+		ReRoll.NONE,       // To Hit Re-roll
+		4,                 // Strength
+		4,                 // Toughness
+		0,                 // To Wound Modifier
+		ReRoll.NONE,       // To Wound Re roll
+		4,                 // Save Target
+		null,              // Invulnerable Save target
+		-1,                // Armour Penetration Modifier
+		ReRoll.NONE,       // Save Re roll
+		new FixedValue(1), // Damage probability Profile
+		1,                 // Wounds
+		12                 // Points Cost
+	);
+	
+	// Determine the kill ratio of the Intercessor vs the Necron Warrior
+	
 	System.out.println(statistics.killRatio(intercessor, necronWarrior));
+
+Which returns the result of 8/3, meaning that 3 Intercessors will be killed for every 8 Necron Warriors
 
 ## Disclaimer
 
