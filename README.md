@@ -14,68 +14,68 @@ Cogpunk Mathhammer is a framework for determining the probabilities and statisti
 ## Building from source
 
 The build requires a Java 6 JDK (or higher) and uses [Maven](https://maven.apache.org)
-
-	mvn install
-
+```bash
+mvn install
+```
 ## Adding as a dependency
-
-	<dependency>
-		<groupId>com.cogpunk</groupId>
-		<artifactId>cogpunk-mathhammer</artifactId>
-		<version>1.0.0</version>
-	</dependency>
-
+```xml
+<dependency>
+	<groupId>com.cogpunk</groupId>
+	<artifactId>cogpunk-mathhammer</artifactId>
+	<version>1.0.3</version>
+</dependency>
+```
 ## License
 
 Code is under the [Apache Licence v2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
 ## Example
+```java
+Statistics statistics = new Statistics(
+			new AverageRollCalculator(
+					new FractionOperator()), 
+			new AttackDamageProfileCalculator());
 
-	Statistics statistics = new Statistics(
-				new AverageRollCalculator(
-						new FractionOperator()), 
-				new AttackDamageProfileCalculator());
-	
-	CombatantProfile intercessor = new CombatantProfileImpl(
-		new FixedValue(1), // Number of attacks probability Profile
-		3,                 // To Hit Target
-		0,                 // To Hit Modifier
-		ReRoll.NONE,       // To Hit Re-roll
-		4,                 // Strength
-		4,                 // Toughness
-		0,                 // To Wound Modifier
-		ReRoll.NONE,       // To Wound Re roll
-		3,                 // Save Target
-		null,              // Invulnerable Save target
-		-1,                // Armour Penetration Modifier
-		ReRoll.NONE,       // Save Re roll
-		new FixedValue(1), // Damage probability Profile
-		2,                 // Wounds
-		18                 // Points Cost
-	);
-	
-	CombatantProfile necronWarrior =  new CombatantProfileImpl(
-		new FixedValue(1), // Number of attacks probability Profile
-		3,                 // To Hit Target
-		0,                 // To Hit Modifier
-		ReRoll.NONE,       // To Hit Re-roll
-		4,                 // Strength
-		4,                 // Toughness
-		0,                 // To Wound Modifier
-		ReRoll.NONE,       // To Wound Re roll
-		4,                 // Save Target
-		null,              // Invulnerable Save target
-		-1,                // Armour Penetration Modifier
-		ReRoll.NONE,       // Save Re roll
-		new FixedValue(1), // Damage probability Profile
-		1,                 // Wounds
-		12                 // Points Cost
-	);
-	
-	// Determine the kill ratio of the Intercessor vs the Necron Warrior
-	
-	System.out.println(statistics.killRatio(intercessor, necronWarrior));
+CombatantProfile intercessor = new CombatantProfileImpl(
+	new FixedValue(1), // Number of attacks probability Profile
+	3,                 // To Hit Target
+	0,                 // To Hit Modifier
+	ReRoll.NONE,       // To Hit Re-roll
+	4,                 // Strength
+	4,                 // Toughness
+	0,                 // To Wound Modifier
+	ReRoll.NONE,       // To Wound Re roll
+	3,                 // Save Target
+	null,              // Invulnerable Save target
+	-1,                // Armour Penetration Modifier
+	ReRoll.NONE,       // Save Re roll
+	new FixedValue(1), // Damage probability Profile
+	2,                 // Wounds
+	18                 // Points Cost
+);
 
+CombatantProfile necronWarrior =  new CombatantProfileImpl(
+	new FixedValue(1), // Number of attacks probability Profile
+	3,                 // To Hit Target
+	0,                 // To Hit Modifier
+	ReRoll.NONE,       // To Hit Re-roll
+	4,                 // Strength
+	4,                 // Toughness
+	0,                 // To Wound Modifier
+	ReRoll.NONE,       // To Wound Re roll
+	4,                 // Save Target
+	null,              // Invulnerable Save target
+	-1,                // Armour Penetration Modifier
+	ReRoll.NONE,       // Save Re roll
+	new FixedValue(1), // Damage probability Profile
+	1,                 // Wounds
+	12                 // Points Cost
+);
+
+// Determine the kill ratio of the Intercessor vs the Necron Warrior
+
+System.out.println(statistics.killRatio(intercessor, necronWarrior));
+```
 Which returns the result of 8/3, meaning that 3 Intercessors will be killed for every 8 Necron Warriors
 
 ## Disclaimer
