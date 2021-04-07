@@ -11,11 +11,7 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 
 public class SingleDiceRollTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@Test
+    @Test
 	public void testStraightRoll() {
 		
 		EventProbabilityProfile<Integer, Fraction> roll = getProfile(3, 0, ReRoll.NONE);

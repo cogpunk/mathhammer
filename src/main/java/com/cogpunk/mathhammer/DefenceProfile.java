@@ -2,14 +2,14 @@ package com.cogpunk.mathhammer;
 
 public interface DefenceProfile {
 	
-	public int getToughness();
+	int getToughness();
 	
-	public int getSave();
+	int getSave();
 	
-	public int getWounds();
+	int getWounds();
 	
-	public Integer getInvulnerableSave();
+	Integer getInvulnerableSave();
 	
-	public ReRoll getSaveReRoll();
+	ReRoll getSaveReRoll();
 
 }

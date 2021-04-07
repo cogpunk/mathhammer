@@ -15,7 +15,7 @@ public class ToWoundRoll extends SingleDiceRollDelegate  {
 	
 	private int getTarget(int strength, int toughness) {
 		
-		int target = 0;
+		int target;
 		
 		if (strength >= 2*toughness) {
 			target = 2;

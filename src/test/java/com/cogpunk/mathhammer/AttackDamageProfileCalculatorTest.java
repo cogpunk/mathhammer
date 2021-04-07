@@ -13,10 +13,6 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 
 public class AttackDamageProfileCalculatorTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	@Test
 	public void testCalculate() {
 	

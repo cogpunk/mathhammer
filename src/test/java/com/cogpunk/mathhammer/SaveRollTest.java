@@ -13,11 +13,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class SaveRollTest extends SingleDiceRollTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-	
-	@Override
+    @Override
 	public EventProbabilityProfile<Integer, Fraction> getProfile(int target, int modifier, ReRoll reroll) {
 		return new SaveRoll(target, null, modifier, reroll);
 	}

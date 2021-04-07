@@ -16,11 +16,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class AverageRollCalculatorTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@Test
+    @Test
 	public void testMean() {
 		
 		Map<Integer, Fraction> map = new HashMap<Integer, Fraction>();

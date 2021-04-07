@@ -4,7 +4,7 @@ import org.apache.commons.math3.fraction.Fraction;
 
 public class PointEffectiveness {
 	
-	private AverageRollCalculator averageRollCalculator;
+	private final AverageRollCalculator averageRollCalculator;
 	
 	public PointEffectiveness(AverageRollCalculator averageRollCalculator) {
 		super();

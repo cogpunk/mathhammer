@@ -10,15 +10,15 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 
 public class SaveRoll implements EventProbabilityProfile<Integer, Fraction> {
 	
-	private int target;
+	private final int target;
 	
-	private Integer invulnerabaleTarget;
+	private final Integer invulnerabaleTarget;
 	
-	private int modifier;
+	private final int modifier;
 	
-	private ReRoll reroll;
+	private final ReRoll reroll;
 	
-	private SingleDiceRoll roll;
+	private final SingleDiceRoll roll;
 	
 	public SaveRoll(int target, Integer invulnerabaleTarget, int modifier, ReRoll reroll) {
 		
@@ -55,12 +55,10 @@ public class SaveRoll implements EventProbabilityProfile<Integer, Fraction> {
 		return reroll;
 	}
 
-	@Override
 	public Fraction getProbability(Integer event) {
 		return roll.getProbability(event);
 	}
 
-	@Override
 	public Map<Integer, Fraction> map() {
 		return roll.map();
 	}

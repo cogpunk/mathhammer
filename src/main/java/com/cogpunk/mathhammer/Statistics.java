@@ -4,9 +4,9 @@ import org.apache.commons.math3.fraction.Fraction;
 
 public class Statistics {
 	
-	private AverageRollCalculator averageRollCalculator;
+	private final AverageRollCalculator averageRollCalculator;
 	
-	private AttackDamageProfileCalculator attackDamageProfileCalculator;
+	private final AttackDamageProfileCalculator attackDamageProfileCalculator;
 	
 	public Statistics(AverageRollCalculator averageRollCalculator,
 			AttackDamageProfileCalculator attackDamageProfileCalculator) {

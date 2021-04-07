@@ -12,14 +12,14 @@ import com.cogpunk.math.probability.SimpleProbabilityProfileImpl;
 
 public class FixedValue implements EventProbabilityProfile<Integer, Fraction> {
 
-	private EventProbabilityProfile<Integer, Fraction> profile;
+	private final EventProbabilityProfile<Integer, Fraction> profile;
 
 	public FixedValue(int value) {
 		super();
 
-		Map<Integer, Fraction> map = new HashMap<Integer, Fraction>();
+		Map<Integer, Fraction> map = new HashMap<>();
 		map.put(value, Fraction.ONE);
-		profile = new SimpleProbabilityProfileImpl<Integer, Fraction>(map);
+		profile = new SimpleProbabilityProfileImpl<>(map);
 
 	}
 

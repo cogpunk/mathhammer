@@ -17,11 +17,11 @@ import com.cogpunk.math.probability.SimpleProbabilityProfileImpl;
 
 public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction> {
 
-	private int target;
+	private final int target;
 
-	private int modifier;
+	private final int modifier;
 
-	private ReRoll reroll;
+	private final ReRoll reroll;
 
 	private EventProbabilityProfile<Integer, Fraction> profile;
 
@@ -49,7 +49,7 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 
 		switch (reroll) {
 		case ONE: {
-			localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile,
+			localProfile = new ConditionalReevaluationProbabilityProfile<>(localProfile,
 					new EventLessThanSelector<Integer, Fraction>(2), 1, fractionOperator);
 			break;
 		}
@@ -59,7 +59,7 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 			// that will be a success upon modification,
 			// hence taking the lower of he two targets to trigger a re-roll
 			//
-			localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile,
+			localProfile = new ConditionalReevaluationProbabilityProfile<>(localProfile,
 					new EventLessThanSelector<Integer, Fraction>(Math.min(localTarget, modifiedTarget)), 1,
 					fractionOperator);
 			break;
@@ -70,16 +70,16 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 		}
 		}
 
-		ComparableEventProbabilityProfile<Integer, Fraction> compLocalProfile = new ComparableEventProbabilityProfileImpl<Integer, Fraction>(
+		ComparableEventProbabilityProfile<Integer, Fraction> compLocalProfile = new ComparableEventProbabilityProfileImpl<>(
 				localProfile.map(), fractionOperator);
 
 		Fraction passProb = compLocalProfile.getProbabilityGreaterThanOrEqualTo(modifiedTarget);
 
-		Map<Integer, Fraction> resultMap = new HashMap<Integer, Fraction>();
+		Map<Integer, Fraction> resultMap = new HashMap<>();
 		resultMap.put(1, passProb);
 		resultMap.put(0, fractionOperator.subtract(Fraction.ONE, passProb));
 
-		profile = new SimpleProbabilityProfileImpl<Integer, Fraction>(resultMap);
+		profile = new SimpleProbabilityProfileImpl<>(resultMap);
 		diceProfile = compLocalProfile;
 
 	}

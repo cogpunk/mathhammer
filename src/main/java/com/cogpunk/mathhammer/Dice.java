@@ -13,19 +13,19 @@ import com.cogpunk.math.probability.ComparableEventProbabilityProfileImpl;
 
 public class Dice implements ComparableEventProbabilityProfile<Integer, Fraction> {
 	
-	private ComparableEventProbabilityProfile<Integer, Fraction> probabilityProfile;
+	private final ComparableEventProbabilityProfile<Integer, Fraction> probabilityProfile;
 	
 	public Dice(int sides) {
 		
 		Fraction prob = new Fraction(1, sides);
 		
-		Map<Integer, Fraction> map = new TreeMap<Integer, Fraction>();
+		Map<Integer, Fraction> map = new TreeMap<>();
 		
 		for (int n= 1; n <= sides; n++ ) {
 			map.put(n,  prob);
 		}
 		
-		probabilityProfile = new ComparableEventProbabilityProfileImpl<Integer, Fraction>(map, new FractionOperator());
+		probabilityProfile = new ComparableEventProbabilityProfileImpl<>(map, new FractionOperator());
 		
 		
 	}

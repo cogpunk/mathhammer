@@ -10,11 +10,11 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 
 public class AttackDamageProfile implements EventProbabilityProfile<Integer, Fraction> {
 
-	private AttackProfile attackProfile;
+	private final AttackProfile attackProfile;
 
-	private DefenceProfile defenceProfile;
+	private final DefenceProfile defenceProfile;
 
-	private EventProbabilityProfile<Integer, Fraction> probabilityProfile;
+	private final EventProbabilityProfile<Integer, Fraction> probabilityProfile;
 
 	public AttackDamageProfile(AttackProfile attackProfile, DefenceProfile defenceProfile,
 			EventProbabilityProfile<Integer, Fraction> probabilityProfile) {
@@ -25,12 +25,10 @@ public class AttackDamageProfile implements EventProbabilityProfile<Integer, Fra
 
 	}
 
-	@Override
 	public Fraction getProbability(Integer event) {
 		return probabilityProfile.getProbability(event);
 	}
 
-	@Override
 	public Map<Integer, Fraction> map() {
 		return probabilityProfile.map();
 	}

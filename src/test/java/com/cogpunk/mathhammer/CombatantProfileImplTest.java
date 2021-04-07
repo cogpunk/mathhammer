@@ -17,7 +17,7 @@ public class CombatantProfileImplTest {
 	
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		
 		profile = new CombatantProfileImpl(new FixedValue(1), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new FixedValue(1), 1, 13);
 		

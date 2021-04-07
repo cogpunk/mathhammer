@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public class AverageRollCalculator extends AverageEventCalculator<Integer, Fraction> {
 	
-	private NumberOperator<Fraction> probabilityNumberOperator;
+	private final NumberOperator<Fraction> probabilityNumberOperator;
 	
 	public AverageRollCalculator(NumberOperator<Fraction> probabilityNumberOperator) {
 		super(probabilityNumberOperator);

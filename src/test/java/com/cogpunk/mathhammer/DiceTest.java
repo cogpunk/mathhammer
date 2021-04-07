@@ -14,7 +14,7 @@ public class DiceTest {
 	Dice dice;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		dice = new Dice(6);
 	}
 

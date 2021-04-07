@@ -9,9 +9,9 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class AttackDamageProfileTest {
 	
-	public CombatantProfileImpl attackProfile = new CombatantProfileImpl(new FixedValue(2), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new Dice(3), 1, 13);
-	public CombatantProfileImpl defenceProfile = new CombatantProfileImpl(new FixedValue(3), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new Dice(3), 1, 13);
-	public AttackDamageProfile attackDamageProfile = new AttackDamageProfile(attackProfile, defenceProfile, new Dice(6));
+	public final CombatantProfileImpl attackProfile = new CombatantProfileImpl(new FixedValue(2), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new Dice(3), 1, 13);
+	public final CombatantProfileImpl defenceProfile = new CombatantProfileImpl(new FixedValue(3), 3, 0, ReRoll.NONE, 4, 4, 0, ReRoll.NONE, 3, null, 0, ReRoll.NONE, new Dice(3), 1, 13);
+	public final AttackDamageProfile attackDamageProfile = new AttackDamageProfile(attackProfile, defenceProfile, new Dice(6));
 
 	@Test
 	public void testGetters() {

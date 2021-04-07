@@ -7,11 +7,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class FixedValueTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@Test
+    @Test
 	public void testEqualsAndHashCode() {
 		
 		EqualsVerifier.simple().forClass(FixedValue.class).verify();

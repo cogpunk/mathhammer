@@ -13,7 +13,7 @@ public class StatisticsTest {
 	private Statistics statistics;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		statistics = new Statistics(new AverageRollCalculator(new FractionOperator()), new AttackDamageProfileCalculator());
 	}
 	

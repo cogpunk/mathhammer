@@ -6,22 +6,22 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 
 public interface AttackProfile {
 	
-	public EventProbabilityProfile<Integer, Fraction> getAttacks();
+	EventProbabilityProfile<Integer, Fraction> getAttacks();
 	
-	public int getSkill();
+	int getSkill();
 	
-	public int getStrength();
+	int getStrength();
 	
-	public int getArmourPenetration();
+	int getArmourPenetration();
 	
-	public ReRoll getToHitReRoll();
+	ReRoll getToHitReRoll();
 	
-	public ReRoll getToWoundReRoll();
+	ReRoll getToWoundReRoll();
 	
-	public int getToHitModifier();
+	int getToHitModifier();
 	
-	public int getToWoundModifier();
+	int getToWoundModifier();
 	
-	public EventProbabilityProfile<Integer, Fraction> getDamageRoll();
+	EventProbabilityProfile<Integer, Fraction> getDamageRoll();
 
 }

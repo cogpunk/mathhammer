@@ -8,35 +8,35 @@ import com.cogpunk.math.probability.EventProbabilityProfile;
 
 public class CombatantProfileImpl implements CombatantProfile {
 	
-	private EventProbabilityProfile<Integer, Fraction> attacks;
+	private final EventProbabilityProfile<Integer, Fraction> attacks;
 	
-	private int skill;
+	private final int skill;
 
-	private int toHitModifier;
+	private final int toHitModifier;
 	
-	private ReRoll toHitReRoll;
+	private final ReRoll toHitReRoll;
 	
-	private int strength;
+	private final int strength;
 	
-	private int toughness;
+	private final int toughness;
 	
-	private int toWoundModifier;
+	private final int toWoundModifier;
 	
-	private ReRoll toWoundReRoll;
+	private final ReRoll toWoundReRoll;
 	
-	private int save;
+	private final int save;
 	
-	private Integer invulnerableSave;
+	private final Integer invulnerableSave;
 
-	private int armourPenetration;
+	private final int armourPenetration;
 	
-	private ReRoll saveReRoll;
+	private final ReRoll saveReRoll;
 	
-	private EventProbabilityProfile<Integer, Fraction> damageRoll;
+	private final EventProbabilityProfile<Integer, Fraction> damageRoll;
 	
-	private int wounds;
+	private final int wounds;
 	
-	private int cost;
+	private final int cost;
 	
 	
 	public CombatantProfileImpl(EventProbabilityProfile<Integer, Fraction> attacks, int skill, int toHitModifier, ReRoll toHitReRoll, int strength, int toughness,
