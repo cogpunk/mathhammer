@@ -17,9 +17,9 @@ public class FixedValue implements EventProbabilityProfile<Integer, Fraction> {
 	public FixedValue(int value) {
 		super();
 
-		Map<Integer, Fraction> map = new HashMap<>();
+		Map<Integer, Fraction> map = new HashMap<Integer, Fraction>();
 		map.put(value, Fraction.ONE);
-		profile = new SimpleProbabilityProfileImpl<>(map);
+		profile = new SimpleProbabilityProfileImpl<Integer, Fraction>(map);
 
 	}
 

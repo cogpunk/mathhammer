@@ -26,7 +26,7 @@ public class AttackDamageProfileCalculator {
 	public EventProbabilityProfile<Integer, Fraction> calculateHitProbabilityProfile(AttackProfile attackProfile) {
 		ToHitRoll toHitRoll = new ToHitRoll(attackProfile.getSkill(), attackProfile.getToHitModifier(), attackProfile.getToHitReRoll());
 		
-		return new VariableProbabilityProfileAggregator<>(
+		return new VariableProbabilityProfileAggregator<Integer, Fraction>(
 				attackProfile.getAttacks(),
 				new EventProbabilityProfileAdditionAggregationStrategy<Integer>(new IntegerOperator()),
 				new FractionOperator(),
@@ -39,7 +39,7 @@ public class AttackDamageProfileCalculator {
 		
 		ToWoundRoll toWoundRoll = new ToWoundRoll(attackProfile.getStrength(), defenceProfile.getToughness(), attackProfile.getToWoundModifier(), attackProfile.getToWoundReRoll());
 		
-		return new VariableProbabilityProfileAggregator<>(
+		return new VariableProbabilityProfileAggregator<Integer, Fraction>(
 				hitProbabilityProfile,
 				new EventProbabilityProfileAdditionAggregationStrategy<Integer>(new IntegerOperator()),
 				new FractionOperator(),
@@ -53,9 +53,9 @@ public class AttackDamageProfileCalculator {
 		
 		SaveRoll saveRoll = new SaveRoll(defenceProfile.getSave(), defenceProfile.getInvulnerableSave(), attackProfile.getArmourPenetration(), defenceProfile.getSaveReRoll());
 		
-		EventProbabilityProfile<Integer, Fraction> unsaveRoll = new EventProbabilityProfileInverter<>(saveRoll, new FractionOperator());
+		EventProbabilityProfile<Integer, Fraction> unsaveRoll = new EventProbabilityProfileInverter<Integer, Fraction>(saveRoll, new FractionOperator());
 		
-		return new VariableProbabilityProfileAggregator<>(
+		return new VariableProbabilityProfileAggregator<Integer, Fraction>(
 				woundProbabilityProfile,
 				new EventProbabilityProfileAdditionAggregationStrategy<Integer>(new IntegerOperator()),
 				new FractionOperator(),
@@ -68,7 +68,7 @@ public class AttackDamageProfileCalculator {
 	public EventProbabilityProfile<Integer, Fraction> calculateDamageProbabilityProfile(AttackProfile attackProfile, EventProbabilityProfile<Integer, Fraction> unsavedProbabilityProfile) {
 		
 		
-		return new VariableProbabilityProfileAggregator<>(
+		return new VariableProbabilityProfileAggregator<Integer, Fraction>(
 				unsavedProbabilityProfile,
 				new EventProbabilityProfileAdditionAggregationStrategy<Integer>(new IntegerOperator()),
 				new FractionOperator(),

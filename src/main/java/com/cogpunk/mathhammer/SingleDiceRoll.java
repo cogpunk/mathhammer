@@ -49,7 +49,7 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 
 		switch (reroll) {
 		case ONE: {
-			localProfile = new ConditionalReevaluationProbabilityProfile<>(localProfile,
+			localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile,
 					new EventLessThanSelector<Integer, Fraction>(2), 1, fractionOperator);
 			break;
 		}
@@ -59,7 +59,7 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 			// that will be a success upon modification,
 			// hence taking the lower of he two targets to trigger a re-roll
 			//
-			localProfile = new ConditionalReevaluationProbabilityProfile<>(localProfile,
+			localProfile = new ConditionalReevaluationProbabilityProfile<Integer, Fraction>(localProfile,
 					new EventLessThanSelector<Integer, Fraction>(Math.min(localTarget, modifiedTarget)), 1,
 					fractionOperator);
 			break;
@@ -70,16 +70,16 @@ public class SingleDiceRoll implements EventProbabilityProfile<Integer, Fraction
 		}
 		}
 
-		ComparableEventProbabilityProfile<Integer, Fraction> compLocalProfile = new ComparableEventProbabilityProfileImpl<>(
+		ComparableEventProbabilityProfile<Integer, Fraction> compLocalProfile = new ComparableEventProbabilityProfileImpl<Integer, Fraction>(
 				localProfile.map(), fractionOperator);
 
 		Fraction passProb = compLocalProfile.getProbabilityGreaterThanOrEqualTo(modifiedTarget);
 
-		Map<Integer, Fraction> resultMap = new HashMap<>();
+		Map<Integer, Fraction> resultMap = new HashMap<Integer, Fraction>();
 		resultMap.put(1, passProb);
 		resultMap.put(0, fractionOperator.subtract(Fraction.ONE, passProb));
 
-		profile = new SimpleProbabilityProfileImpl<>(resultMap);
+		profile = new SimpleProbabilityProfileImpl<Integer, Fraction>(resultMap);
 		diceProfile = compLocalProfile;
 
 	}

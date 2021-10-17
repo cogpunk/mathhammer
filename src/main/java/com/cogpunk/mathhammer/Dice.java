@@ -19,13 +19,13 @@ public class Dice implements ComparableEventProbabilityProfile<Integer, Fraction
 		
 		Fraction prob = new Fraction(1, sides);
 		
-		Map<Integer, Fraction> map = new TreeMap<>();
+		Map<Integer, Fraction> map = new TreeMap<Integer, Fraction>();
 		
 		for (int n= 1; n <= sides; n++ ) {
 			map.put(n,  prob);
 		}
 		
-		probabilityProfile = new ComparableEventProbabilityProfileImpl<>(map, new FractionOperator());
+		probabilityProfile = new ComparableEventProbabilityProfileImpl<Integer, Fraction>(map, new FractionOperator());
 		
 		
 	}
