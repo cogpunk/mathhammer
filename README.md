@@ -22,7 +22,7 @@ mvn install
 <dependency>
 	<groupId>com.cogpunk</groupId>
 	<artifactId>cogpunk-mathhammer</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 </dependency>
 ```
 ## License
