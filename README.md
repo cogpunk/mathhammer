@@ -13,7 +13,7 @@ Cogpunk Mathhammer is a framework for determining the probabilities and statisti
 
 ## Building from source
 
-The build requires a Java 6 JDK (or higher) and uses [Maven](https://maven.apache.org)
+The build requires a Java 11 JDK (or higher) and uses [Maven](https://maven.apache.org)
 ```bash
 mvn install
 ```
