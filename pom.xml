@@ -140,13 +140,19 @@
 				<version>${jacoco.version}</version> 
 				<executions>
 					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<phase>verify</phase>
+							<id>jacoco-initialize</id>
+							<goals>
+									<goal>prepare-agent</goal>
+							</goals>
 					</execution>
-				</executions>
+					<execution>
+							<id>jacoco-site</id>
+							<phase>package</phase>
+							<goals>
+									<goal>report</goal>
+							</goals>
+					</execution>
+    		</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
