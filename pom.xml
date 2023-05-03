@@ -65,12 +65,19 @@
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<sonar.java.source>6</sonar.java.source>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<sonar.java.source>11</sonar.java.source>
 		<sonar.projectKey>cogpunk_mathhammer</sonar.projectKey>
 		<sonar.organization>cogpunk</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<!-- JaCoCo Properties -->
+		<jacoco.version>0.8.10</jacoco.version>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.language>java</sonar.language>
 	</properties>
 	<build>
 		<finalName>cogpunk-mathhammer</finalName>
@@ -130,7 +137,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.8</version>
+				<version>${jacoco.version}</version> 
 				<executions>
 					<execution>
 						<id>report</id>
